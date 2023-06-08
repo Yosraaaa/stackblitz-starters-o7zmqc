@@ -1,0 +1,19 @@
+/* Add application styles & imports to this file! */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  padding: 3em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
