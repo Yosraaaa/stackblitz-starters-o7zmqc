@@ -1,13 +1,10 @@
 import { HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
 import {
   Feedback,
   ErrorMessageFeedback,
   SuccessMessageFeedback,
-  ErrorNotificationFeedback,
-  SuccessNotificationFeedback,
 } from './feedback';
 
 export abstract class FeedbackFactory {
@@ -33,26 +30,6 @@ export class MessageFeedbackFactory extends FeedbackFactory {
         )
       : new SuccessMessageFeedback(
           this.messageService,
-          'Request is successful'
-        );
-  }
-}
-
-@Injectable()
-export class NotificationFeedbackFactory extends FeedbackFactory {
-  constructor(protected notificationService: NzNotificationService) {
-    super();
-  }
-
-  createFeedback<T extends any>(response: HttpResponseBase): Feedback {
-    return response instanceof HttpErrorResponse
-      ? new ErrorNotificationFeedback(
-          this.notificationService,
-          response.error.title,
-          response.error.description
-        )
-      : new SuccessNotificationFeedback(
-          this.notificationService,
           'Request is successful'
         );
   }
